@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sarath PS – games and apps</title>
+<meta name="description" content="Games and apps by Sarath PS, including Wise Words.">
+<link rel="canonical" href="https://srthsps.github.io/">
+<link rel="icon" type="image/png" href="/images/wise-words-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Atkinson+Hyperlegible:wght@400;700&display=swap">
+<style>
+:root {
+  --sky-top: #5ec8ff; --sky-bottom: #c9f3dc;
+  --bg: #f6fbff; --surface: #ffffff; --ink: #2b2246; --muted: #675f80; --line: #dfe6f2;
+  --accent: #7b4fd6; --accent-ink: #ffffff; --green: #2fb879; --chip: #efe7ff;
+  --display: "Fredoka", "Trebuchet MS", system-ui, sans-serif;
+  --body: "Atkinson Hyperlegible", "Segoe UI", system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --sky-top: #1b1d4f; --sky-bottom: #4b2f7a; --bg: #15122a; --surface: #211c3a; --ink: #f1edff;
+    --muted: #b3a9d1; --line: #342c55; --accent: #b496ff; --accent-ink: #1a1430; --green: #5fd6a5; --chip: #2e2650; color-scheme: dark; }
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 17px; line-height: 1.6; }
+a { color: var(--accent); }
+a:focus-visible, .button:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+.wrap { max-width: 1040px; margin: 0 auto; padding-left: max(18px, env(safe-area-inset-left)); padding-right: max(18px, env(safe-area-inset-right)); }
+.col { max-width: 70ch; }
+h1, h2, h3 { font-family: var(--display); font-weight: 600; line-height: 1.15; text-wrap: balance; margin: 0; }
+h1 { font-size: clamp(2.2rem, 6vw, 3.4rem); }
+h2 { font-size: 1.55rem; margin: 48px 0 12px; }
+h3 { font-size: 1.15rem; margin: 30px 0 8px; }
+p { margin: 0 0 14px; }
+header.top { padding-block: 16px; }
+header.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+.brand { display: flex; align-items: center; gap: 10px; font-family: var(--display); font-weight: 600; font-size: 1.15rem; color: var(--ink); text-decoration: none; }
+.brand img { width: 36px; height: 36px; border-radius: 9px; }
+nav { display: flex; gap: 18px; flex-wrap: wrap; font-size: .95rem; }
+nav a { color: var(--muted); text-decoration: none; font-weight: 700; }
+nav a:hover { color: var(--accent); }
+.hero { background: linear-gradient(180deg, var(--sky-top), var(--sky-bottom)); color: #fff; padding-block: 48px 56px; }
+.hero .wrap { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 36px; align-items: center; }
+@media (max-width: 760px) { .hero .wrap { grid-template-columns: minmax(0, 1fr); } }
+.hero h1 { color: #fff; text-shadow: 0 2px 0 rgba(43, 34, 70, .35); }
+.hero .lede { font-size: 1.2rem; margin-top: 14px; text-shadow: 0 1px 0 rgba(43, 34, 70, .3); }
+.hero .icon { width: 88px; height: 88px; border-radius: 22px; box-shadow: 0 6px 18px rgba(30, 20, 60, .25); margin-bottom: 18px; }
+.hero figure { margin: 0; }
+.hero figure img { width: 100%; max-width: 100%; border-radius: 18px; box-shadow: 0 10px 30px rgba(30, 20, 60, .3); display: block; }
+.button { display: inline-flex; align-items: center; gap: 10px; background: var(--green); color: #fff; font-family: var(--display); font-weight: 600;
+  font-size: 1.1rem; padding: 12px 22px; border-radius: 999px; text-decoration: none; box-shadow: 0 4px 0 rgba(0, 0, 0, .18); margin-top: 22px; }
+.note { font-size: .92rem; color: var(--muted); }
+.hero .note { color: #fff; opacity: .92; margin-top: 10px; }
+.features { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin-top: 8px; }
+.feature { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 16px 18px; min-width: 0; }
+.feature h3 { margin: 0 0 6px; }
+.shots { display: flex; gap: 14px; overflow-x: auto; padding-bottom: 8px; scroll-snap-type: x mandatory; }
+.shots img { width: 220px; flex: 0 0 auto; border-radius: 16px; border: 1px solid var(--line); scroll-snap-align: start; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 6px 0 0; padding: 0; list-style: none; }
+.chips li { background: var(--chip); border-radius: 999px; padding: 4px 12px; font-weight: 700; font-size: .92rem; }
+.card { display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 18px; align-items: center; background: var(--surface);
+  border: 1px solid var(--line); border-radius: 20px; padding: 18px; text-decoration: none; color: inherit; }
+.card img { width: 96px; height: 96px; border-radius: 22px; }
+.card h3 { margin: 0 0 4px; }
+.legal h1 { font-size: clamp(1.9rem, 5vw, 2.6rem); margin-top: 28px; }
+.legal .meta { color: var(--muted); margin: 8px 0 26px; }
+.legal ul { padding-left: 1.2em; margin: 0 0 14px; }
+.legal li { margin-bottom: 6px; }
+footer { border-top: 1px solid var(--line); margin-top: 56px; padding-block: 24px 40px; color: var(--muted); font-size: .92rem; }
+footer .wrap { display: flex; gap: 18px; flex-wrap: wrap; justify-content: space-between; }
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="brand" href="/"><img src="/images/wise-words-icon.png" alt="">Sarath PS</a>
+  <nav aria-label="Site"><a href="/wise-words/">Wise Words</a><a href="/wise-words/privacy/">Privacy</a><a href="/wise-words/terms/">Terms</a><a href="mailto:srthsps22@gmail.com">Contact</a></nav>
+</div></header>
+<main>
+<section class="hero"><div class="wrap">
+  <div>
+    <h1>Games and apps by Sarath PS</h1>
+    <p class="lede">Friendly, ad-light games for kids and grown-ups.</p>
+  </div>
+  <figure><img src="images/wise-words-feature.jpg" alt="Wise Words: climb a crossword into the sky" width="1024" height="500"></figure>
+</div></section>
+<div class="wrap">
+  <h2>Apps</h2>
+  <a class="card" href="wise-words/">
+    <img src="images/wise-words-icon.png" alt="" width="96" height="96">
+    <div><h3>Wise Words</h3><p class="note" style="margin:0">An endless crossword that grows into the sky, in 7 languages. Android.</p></div>
+  </a>
+  <h2>Contact</h2>
+  <p class="col">Questions, feedback or a word meaning that looks wrong? Email <a href="mailto:srthsps22@gmail.com">srthsps22@gmail.com</a>.</p>
+</div>
+</main>
+<footer><div class="wrap">
+  <span>© 2026 Sarath PS</span>
+  <span><a href="/wise-words/privacy/">Privacy policy</a> · <a href="/wise-words/terms/">Terms</a> · <a href="mailto:srthsps22@gmail.com">srthsps22@gmail.com</a></span>
+</div></footer>
+</body>
+</html>

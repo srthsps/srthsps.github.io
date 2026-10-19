@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Terms and Conditions – Wise Words</title>
+<meta name="description" content="Terms and Conditions for the Wise Words word puzzle game.">
+<link rel="canonical" href="https://srthsps.github.io/wise-words/terms/">
+<link rel="icon" type="image/png" href="/images/wise-words-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Atkinson+Hyperlegible:wght@400;700&display=swap">
+<style>
+:root {
+  --sky-top: #5ec8ff; --sky-bottom: #c9f3dc;
+  --bg: #f6fbff; --surface: #ffffff; --ink: #2b2246; --muted: #675f80; --line: #dfe6f2;
+  --accent: #7b4fd6; --accent-ink: #ffffff; --green: #2fb879; --chip: #efe7ff;
+  --display: "Fredoka", "Trebuchet MS", system-ui, sans-serif;
+  --body: "Atkinson Hyperlegible", "Segoe UI", system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --sky-top: #1b1d4f; --sky-bottom: #4b2f7a; --bg: #15122a; --surface: #211c3a; --ink: #f1edff;
+    --muted: #b3a9d1; --line: #342c55; --accent: #b496ff; --accent-ink: #1a1430; --green: #5fd6a5; --chip: #2e2650; color-scheme: dark; }
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 17px; line-height: 1.6; }
+a { color: var(--accent); }
+a:focus-visible, .button:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+.wrap { max-width: 1040px; margin: 0 auto; padding-left: max(18px, env(safe-area-inset-left)); padding-right: max(18px, env(safe-area-inset-right)); }
+.col { max-width: 70ch; }
+h1, h2, h3 { font-family: var(--display); font-weight: 600; line-height: 1.15; text-wrap: balance; margin: 0; }
+h1 { font-size: clamp(2.2rem, 6vw, 3.4rem); }
+h2 { font-size: 1.55rem; margin: 48px 0 12px; }
+h3 { font-size: 1.15rem; margin: 30px 0 8px; }
+p { margin: 0 0 14px; }
+header.top { padding-block: 16px; }
+header.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+.brand { display: flex; align-items: center; gap: 10px; font-family: var(--display); font-weight: 600; font-size: 1.15rem; color: var(--ink); text-decoration: none; }
+.brand img { width: 36px; height: 36px; border-radius: 9px; }
+nav { display: flex; gap: 18px; flex-wrap: wrap; font-size: .95rem; }
+nav a { color: var(--muted); text-decoration: none; font-weight: 700; }
+nav a:hover { color: var(--accent); }
+.hero { background: linear-gradient(180deg, var(--sky-top), var(--sky-bottom)); color: #fff; padding-block: 48px 56px; }
+.hero .wrap { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 36px; align-items: center; }
+@media (max-width: 760px) { .hero .wrap { grid-template-columns: minmax(0, 1fr); } }
+.hero h1 { color: #fff; text-shadow: 0 2px 0 rgba(43, 34, 70, .35); }
+.hero .lede { font-size: 1.2rem; margin-top: 14px; text-shadow: 0 1px 0 rgba(43, 34, 70, .3); }
+.hero .icon { width: 88px; height: 88px; border-radius: 22px; box-shadow: 0 6px 18px rgba(30, 20, 60, .25); margin-bottom: 18px; }
+.hero figure { margin: 0; }
+.hero figure img { width: 100%; max-width: 100%; border-radius: 18px; box-shadow: 0 10px 30px rgba(30, 20, 60, .3); display: block; }
+.button { display: inline-flex; align-items: center; gap: 10px; background: var(--green); color: #fff; font-family: var(--display); font-weight: 600;
+  font-size: 1.1rem; padding: 12px 22px; border-radius: 999px; text-decoration: none; box-shadow: 0 4px 0 rgba(0, 0, 0, .18); margin-top: 22px; }
+.note { font-size: .92rem; color: var(--muted); }
+.hero .note { color: #fff; opacity: .92; margin-top: 10px; }
+.features { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin-top: 8px; }
+.feature { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 16px 18px; min-width: 0; }
+.feature h3 { margin: 0 0 6px; }
+.shots { display: flex; gap: 14px; overflow-x: auto; padding-bottom: 8px; scroll-snap-type: x mandatory; }
+.shots img { width: 220px; flex: 0 0 auto; border-radius: 16px; border: 1px solid var(--line); scroll-snap-align: start; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 6px 0 0; padding: 0; list-style: none; }
+.chips li { background: var(--chip); border-radius: 999px; padding: 4px 12px; font-weight: 700; font-size: .92rem; }
+.card { display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 18px; align-items: center; background: var(--surface);
+  border: 1px solid var(--line); border-radius: 20px; padding: 18px; text-decoration: none; color: inherit; }
+.card img { width: 96px; height: 96px; border-radius: 22px; }
+.card h3 { margin: 0 0 4px; }
+.legal h1 { font-size: clamp(1.9rem, 5vw, 2.6rem); margin-top: 28px; }
+.legal .meta { color: var(--muted); margin: 8px 0 26px; }
+.legal ul { padding-left: 1.2em; margin: 0 0 14px; }
+.legal li { margin-bottom: 6px; }
+footer { border-top: 1px solid var(--line); margin-top: 56px; padding-block: 24px 40px; color: var(--muted); font-size: .92rem; }
+footer .wrap { display: flex; gap: 18px; flex-wrap: wrap; justify-content: space-between; }
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="brand" href="/"><img src="/images/wise-words-icon.png" alt="">Sarath PS</a>
+  <nav aria-label="Site"><a href="/wise-words/">Wise Words</a><a href="/wise-words/privacy/">Privacy</a><a href="/wise-words/terms/">Terms</a><a href="mailto:srthsps22@gmail.com">Contact</a></nav>
+</div></header>
+<main class="wrap legal"><div class="col">
+<h1>Terms and Conditions</h1>
+<p class="meta">Wise Words · Effective date: 20 October 2026</p>
+<p>These terms are an agreement between you and Sarath PS (&quot;I&quot;, &quot;me&quot;), the maker of Wise Words (&quot;the game&quot;). By installing or playing the game you agree to them. If you don&#x27;t agree, please don&#x27;t use the game. If you are under 18, please read these terms with a parent or guardian.</p>
+<h2>1. Using the game</h2>
+<p>You may install and play the game on your own devices for personal, non-commercial fun. You may not copy, sell, rent, modify or redistribute the game, or try to reverse-engineer it, except where the law allows this.</p>
+<h2>2. Your nickname</h2>
+<p>You choose a nickname and an animal avatar to appear in the world ranking. Your nickname must not:</p>
+<ul><li>be rude, hateful, threatening or sexual;</li><li>pretend to be someone else;</li><li>include personal details such as your full name, phone number or address.</li></ul>
+<p>The game filters common rude words, but you are responsible for the nickname you choose. I may change or remove any nickname that breaks these rules.</p>
+<h2>3. Playing fair</h2>
+<p>The world ranking is meant to be fair: everyone plays the same puzzles. You agree not to:</p>
+<ul><li>cheat, use bots or scripts, or change the game or its network traffic to get points;</li><li>attack, overload or try to get unauthorised access to the game&#x27;s servers;</li><li>use bugs on purpose to gain points (please report them instead).</li></ul>
+<p>I may remove results or players from the ranking if I believe these rules have been broken.</p>
+<h2>4. Coins and points</h2>
+<p>Coins and ranking points exist only inside the game. They have no money value, cannot be bought, sold or exchanged, and cannot be swapped for real money or prizes. They may be adjusted or reset, for example to fix a bug or remove cheating. The game has no purchases. It offers optional video ads that you can choose to watch for in-game rewards, provided by Google AdMob; rewards from ads are in-game items only, just like coins earned by playing.</p>
+<h2>5. Word meanings</h2>
+<p>English word meanings come mostly from Princeton University&#x27;s WordNet 3.0, used under its licence (&quot;WordNet 3.0 Copyright 2006 by Princeton University. All rights reserved.&quot;). The word lists, meanings, synonyms and word stories for German, French, Spanish, Portuguese, Italian and Dutch are derived from Wiktionary (<a href="https://wiktionary.org">wiktionary.org</a>), as extracted by wiktextract (<a href="https://kaikki.org">kaikki.org</a>), and from the wordfreq word frequencies, all under the Creative Commons Attribution-ShareAlike 4.0 licence (<a href="https://creativecommons.org/licenses/by-sa/4.0">creativecommons.org/licenses/by-sa/4.0</a>). Some meanings, synonyms and word stories were written for the game. They are offered to help you learn and may sometimes be incomplete or wrong. Please email me if you spot a mistake.</p>
+<h2>6. Testing versions</h2>
+<p>If you are taking part in a test, you are using an early version. It may have bugs, change often, or reset progress. Please don&#x27;t share private test builds with others. Testing builds send the testing information described in the Privacy Policy.</p>
+<h2>7. Privacy</h2>
+<p>The Privacy Policy explains what information the game collects and how it is used. It is part of these terms.</p>
+<h2>8. Ownership</h2>
+<p>The game, including its code, art, sounds, characters (such as Lexi the owl) and name, belongs to Sarath PS, except for third-party material used under its own licence. These terms don&#x27;t give you ownership of any part of it.</p>
+<h2>9. Changes and availability</h2>
+<p>I may update, change or stop the game, or any feature such as the world ranking, at any time. The ranking needs an internet connection and may sometimes be unavailable. I may update these terms. If I do, the new version will be published with a new effective date, and continuing to play means you accept it.</p>
+<h2>10. No warranty</h2>
+<p>The game is provided &quot;as is&quot; and &quot;as available&quot;. As far as the law allows, I don&#x27;t promise that it will be error-free, always available, or right for any particular purpose.</p>
+<h2>11. Limit of liability</h2>
+<p>As far as the law allows, I am not liable for any indirect or consequential loss, or for lost data or progress, arising from your use of the game. Nothing in these terms limits any rights you have under consumer law that cannot be excluded.</p>
+<h2>12. Ending</h2>
+<p>You can stop using the game at any time by uninstalling it. You can delete your ranking data in the game (profile, then &quot;Delete my data&quot;) or by email (see the Privacy Policy). I may stop you from using the ranking if you seriously or repeatedly break these terms.</p>
+<h2>13. Governing law</h2>
+<p>These terms are governed by the laws of India, without affecting any rights you have under the laws of the country where you live.</p>
+<h2>14. Contact</h2>
+<p>Sarath PS Email: <a href="mailto:srthsps22@gmail.com">srthsps22@gmail.com</a></p>
+</div></main>
+<footer><div class="wrap">
+  <span>© 2026 Sarath PS</span>
+  <span><a href="/wise-words/privacy/">Privacy policy</a> · <a href="/wise-words/terms/">Terms</a> · <a href="mailto:srthsps22@gmail.com">srthsps22@gmail.com</a></span>
+</div></footer>
+</body>
+</html>

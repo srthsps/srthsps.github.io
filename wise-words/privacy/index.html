@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Privacy Policy – Wise Words</title>
+<meta name="description" content="Privacy Policy for the Wise Words word puzzle game.">
+<link rel="canonical" href="https://srthsps.github.io/wise-words/privacy/">
+<link rel="icon" type="image/png" href="/images/wise-words-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Atkinson+Hyperlegible:wght@400;700&display=swap">
+<style>
+:root {
+  --sky-top: #5ec8ff; --sky-bottom: #c9f3dc;
+  --bg: #f6fbff; --surface: #ffffff; --ink: #2b2246; --muted: #675f80; --line: #dfe6f2;
+  --accent: #7b4fd6; --accent-ink: #ffffff; --green: #2fb879; --chip: #efe7ff;
+  --display: "Fredoka", "Trebuchet MS", system-ui, sans-serif;
+  --body: "Atkinson Hyperlegible", "Segoe UI", system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --sky-top: #1b1d4f; --sky-bottom: #4b2f7a; --bg: #15122a; --surface: #211c3a; --ink: #f1edff;
+    --muted: #b3a9d1; --line: #342c55; --accent: #b496ff; --accent-ink: #1a1430; --green: #5fd6a5; --chip: #2e2650; color-scheme: dark; }
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 17px; line-height: 1.6; }
+a { color: var(--accent); }
+a:focus-visible, .button:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+.wrap { max-width: 1040px; margin: 0 auto; padding-left: max(18px, env(safe-area-inset-left)); padding-right: max(18px, env(safe-area-inset-right)); }
+.col { max-width: 70ch; }
+h1, h2, h3 { font-family: var(--display); font-weight: 600; line-height: 1.15; text-wrap: balance; margin: 0; }
+h1 { font-size: clamp(2.2rem, 6vw, 3.4rem); }
+h2 { font-size: 1.55rem; margin: 48px 0 12px; }
+h3 { font-size: 1.15rem; margin: 30px 0 8px; }
+p { margin: 0 0 14px; }
+header.top { padding-block: 16px; }
+header.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+.brand { display: flex; align-items: center; gap: 10px; font-family: var(--display); font-weight: 600; font-size: 1.15rem; color: var(--ink); text-decoration: none; }
+.brand img { width: 36px; height: 36px; border-radius: 9px; }
+nav { display: flex; gap: 18px; flex-wrap: wrap; font-size: .95rem; }
+nav a { color: var(--muted); text-decoration: none; font-weight: 700; }
+nav a:hover { color: var(--accent); }
+.hero { background: linear-gradient(180deg, var(--sky-top), var(--sky-bottom)); color: #fff; padding-block: 48px 56px; }
+.hero .wrap { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 36px; align-items: center; }
+@media (max-width: 760px) { .hero .wrap { grid-template-columns: minmax(0, 1fr); } }
+.hero h1 { color: #fff; text-shadow: 0 2px 0 rgba(43, 34, 70, .35); }
+.hero .lede { font-size: 1.2rem; margin-top: 14px; text-shadow: 0 1px 0 rgba(43, 34, 70, .3); }
+.hero .icon { width: 88px; height: 88px; border-radius: 22px; box-shadow: 0 6px 18px rgba(30, 20, 60, .25); margin-bottom: 18px; }
+.hero figure { margin: 0; }
+.hero figure img { width: 100%; max-width: 100%; border-radius: 18px; box-shadow: 0 10px 30px rgba(30, 20, 60, .3); display: block; }
+.button { display: inline-flex; align-items: center; gap: 10px; background: var(--green); color: #fff; font-family: var(--display); font-weight: 600;
+  font-size: 1.1rem; padding: 12px 22px; border-radius: 999px; text-decoration: none; box-shadow: 0 4px 0 rgba(0, 0, 0, .18); margin-top: 22px; }
+.note { font-size: .92rem; color: var(--muted); }
+.hero .note { color: #fff; opacity: .92; margin-top: 10px; }
+.features { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin-top: 8px; }
+.feature { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 16px 18px; min-width: 0; }
+.feature h3 { margin: 0 0 6px; }
+.shots { display: flex; gap: 14px; overflow-x: auto; padding-bottom: 8px; scroll-snap-type: x mandatory; }
+.shots img { width: 220px; flex: 0 0 auto; border-radius: 16px; border: 1px solid var(--line); scroll-snap-align: start; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 6px 0 0; padding: 0; list-style: none; }
+.chips li { background: var(--chip); border-radius: 999px; padding: 4px 12px; font-weight: 700; font-size: .92rem; }
+.card { display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 18px; align-items: center; background: var(--surface);
+  border: 1px solid var(--line); border-radius: 20px; padding: 18px; text-decoration: none; color: inherit; }
+.card img { width: 96px; height: 96px; border-radius: 22px; }
+.card h3 { margin: 0 0 4px; }
+.legal h1 { font-size: clamp(1.9rem, 5vw, 2.6rem); margin-top: 28px; }
+.legal .meta { color: var(--muted); margin: 8px 0 26px; }
+.legal ul { padding-left: 1.2em; margin: 0 0 14px; }
+.legal li { margin-bottom: 6px; }
+footer { border-top: 1px solid var(--line); margin-top: 56px; padding-block: 24px 40px; color: var(--muted); font-size: .92rem; }
+footer .wrap { display: flex; gap: 18px; flex-wrap: wrap; justify-content: space-between; }
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="brand" href="/"><img src="/images/wise-words-icon.png" alt="">Sarath PS</a>
+  <nav aria-label="Site"><a href="/wise-words/">Wise Words</a><a href="/wise-words/privacy/">Privacy</a><a href="/wise-words/terms/">Terms</a><a href="mailto:srthsps22@gmail.com">Contact</a></nav>
+</div></header>
+<main class="wrap legal"><div class="col">
+<h1>Privacy Policy</h1>
+<p class="meta">Wise Words · Effective date: 20 October 2026</p>
+<p>Wise Words (&quot;the game&quot;) is made by Sarath PS (&quot;I&quot;, &quot;me&quot;). This policy explains what information the game collects, why, and what you can do about it. If you have any questions, email me at <a href="mailto:srthsps22@gmail.com">srthsps22@gmail.com</a>.</p>
+<h2>1. The short version</h2>
+<ul><li>The game has no in-app purchases.</li><li>It uses Google Firebase to collect anonymous gameplay statistics and crash reports, so I can fix bugs and improve the game (section 6). These never include your nickname, and they are switched off in the European Economic Area, the UK and Switzerland.</li><li>It has optional video ads, shown only when you choose to watch one for a reward (a free hint or extra coins). They are provided by Google AdMob, which uses device information as described in section 5.</li><li>It never asks for your real name, email address, phone number, photos, contacts or location.</li><li>To show the world ranking, it stores the nickname and animal avatar you choose, a random anonymous account ID, and your game scores.</li><li>During testing builds only, it also sends basic device information so I can see which test devices are working.</li><li>You can delete your data at any time, right in the game (see section 9).</li></ul>
+<h2>2. Information saved on your device</h2>
+<p>The game keeps a save file on your phone with your progress: your current ledge, coins, the words in your Word Book, treasure words found, your Daily Bloom calendar and streak, daily gifts collected, the looks you own, sound and vibration settings, your nickname and avatar, and a sign-in token for the ranking. This file stays on your device and is deleted when you uninstall the game.</p>
+<p>If you turn on Daily Bloom reminders, the game schedules them on your phone. To pick a good time, it remembers the hours you usually open the game, on your device only. Nothing about reminders is sent anywhere, and you can turn them off at any time in the game or in your phone&#x27;s settings.</p>
+<h2>3. Information sent to the ranking server</h2>
+<p>When you are online, the game takes part in the world ranking. For this it sends:</p>
+<ul><li>Your nickname (2 to 12 characters, chosen by you) and the animal avatar you picked. Nicknames are checked against a list of rude words.</li><li>A random anonymous account ID that is created for your installation. It is not linked to your Google account, email or phone number.</li><li>Your results for each finished ledge: the ledge number, the number of wrong words, hints used and bonus words found. The server works out your points from these.</li><li>The times your results were submitted, so the server can spot cheating and keep the ranking fair.</li></ul>
+<p>Other players can see your nickname, avatar, points and highest ledge on the ranking. They cannot see anything else about you.</p>
+<p>Please don&#x27;t use your real full name or other personal details as your nickname.</p>
+<p>The game works offline. If you are not connected, your results wait on your device and are sent the next time you are online.</p>
+<h2>4. Information sent in testing builds</h2>
+<p>Builds of the game handed out for testing (for example, a Google Play closed test) include a small testing tool called Tester Pulse. It tells me which test devices installed the game and when it was last opened. When the game opens, and then about every 30 minutes while it is in use, it sends:</p>
+<ul><li>a random install ID created for the installation;</li><li>the device manufacturer and model, Android version, device type (phone or tablet) and language setting;</li><li>the game&#x27;s version and package name;</li><li>an app set ID provided by Google Play services, which identifies the device to apps from the same developer and is not used for advertising;</li><li>the times the game was opened;</li><li>if you joined the test through a tester invitation link, the code from that link, so your device can be matched to your tester entry.</li></ul>
+<p>This information is only used to manage testing. It is not sent by builds that don&#x27;t include the testing tool.</p>
+<h2>5. Ads</h2>
+<p>Some screens offer a short video ad in exchange for a reward, for example &quot;Watch an ad for a free hint&quot; or &quot;Double your coins&quot;. Ads only play when you tap one of these offers. The game never shows banners or ads that interrupt play, and the number of rewarded ads is limited each day.</p>
+<p>These ads are provided by Google AdMob. To show an ad, count it and prevent fraud, Google may collect:</p>
+<ul><li>your device&#x27;s advertising ID (or the app set ID if the advertising ID isn&#x27;t available);</li><li>your IP address, which can indicate your approximate location;</li><li>device information such as model, operating system and language;</li><li>how you interact with the ad (for example, whether it was watched to the end).</li></ul>
+<p>The game asks AdMob for ads suitable for all ages only. In the European Economic Area, the UK and Switzerland, Google&#x27;s consent form asks whether ads may be personalised before any ad is loaded. Where the law gives you privacy choices (including the EEA, the UK, Switzerland and some US states), a &quot;Privacy choices&quot; link on your profile screen lets you change or withdraw them at any time.</p>
+<p>You can reset or delete your advertising ID, or opt out of personalised ads, in your phone&#x27;s settings (Settings &gt; Google &gt; Ads, or Settings &gt; Privacy &gt; Ads). Google&#x27;s privacy policy explains how Google uses this information: <a href="https://policies.google.com/technologies/partner-sites">https://policies.google.com/technologies/partner-sites</a></p>
+<p>I do not receive your advertising ID or any personal information from the ads.</p>
+<h2>6. Analytics and crash reports</h2>
+<p>To find bugs and see which parts of the game are too hard, too easy or confusing, the game uses Google Firebase Analytics and Firebase Crashlytics. They receive:</p>
+<ul><li>events about how the game is played, for example: which ledge you started, finished or left and how long it took, how many hints and wrong words it needed, Daily Bloom results, daily gifts collected, items bought with coins, and whether an optional ad was offered and watched;</li><li>if the game crashes: a crash report with the device model, Android version, game version and what the game was doing at the time;</li><li>a random Firebase installation ID created for this installation, basic device information (model, Android version, language), an approximate location (country or region) worked out from your IP address, and when the game was used.</li></ul>
+<p>These reports never include your nickname, avatar, your ranking account or anything you type. The game tells Firebase not to read your device&#x27;s advertising ID, and this information is not used for advertising.</p>
+<p>In the European Economic Area, the UK and Switzerland, analytics and crash reports are switched off. Elsewhere they start only after Google&#x27;s consent check confirms that no consent is required in your region.</p>
+<p>Analytics event data is kept for about two months and crash reports for 90 days; summary statistics without any installation ID may be kept longer. Because these reports are anonymous and not linked to your nickname, they can&#x27;t be looked up or deleted for one player. Uninstalling the game or clearing its data creates a new installation ID.</p>
+<h2>7. Why the information is used</h2>
+<p>Your information is used only to:</p>
+<ul><li>run the world ranking and show your place on it;</li><li>keep the ranking fair (for example, limiting how fast results can be submitted);</li><li>save your progress;</li><li>during testing, see which test devices are working and fix problems;</li><li>show the optional rewarded ads described in section 5;</li><li>find bugs and improve the game, using the statistics and crash reports described in section 6.</li></ul>
+<p>I never sell or rent your information. The ranking and testing information is not used for advertising.</p>
+<h2>8. Who processes the information</h2>
+<ul><li>Supabase stores the ranking data (nicknames, avatars, anonymous account IDs and scores). The servers are in the Mumbai, India region.</li><li>Cloudflare hosts the testing service that receives the Tester Pulse information.</li><li>Google Play services provides the app set ID on testing builds.</li><li>Google AdMob provides the optional rewarded ads and receives the information listed in section 5.</li><li>Google Firebase (Analytics and Crashlytics) receives the statistics and crash reports described in section 6, and processes them on my behalf.</li></ul>
+<p>All information is sent over encrypted connections (HTTPS). Supabase and Cloudflare process the data on my behalf and only to provide their services. Google handles ad data under its own privacy policy.</p>
+<h2>9. Keeping and deleting your information</h2>
+<p>Ranking information is kept while you play, so your place on the ranking is kept. Testing information is kept while the test runs and for a reasonable time afterwards.</p>
+<p>To delete your data in the game: tap your profile card at the top of the main menu, then tap &quot;Delete my data&quot; and confirm. This immediately deletes your nickname, avatar, anonymous account and scores from the ranking server, and resets the game on your phone. You need an internet connection for this.</p>
+<p>You can also email <a href="mailto:srthsps22@gmail.com">srthsps22@gmail.com</a> with your nickname to ask me to delete it. Approximate points and the date you started playing help me find the right entry. I will delete it within 30 days and let you know when it&#x27;s done. Uninstalling the game deletes everything stored on your device, but not your ranking data, so use &quot;Delete my data&quot; first if you want that gone too.</p>
+<p>You can also email me to ask what information I hold about you, or to correct it.</p>
+<h2>10. Children</h2>
+<p>Wise Words is made for kids and grown-ups. It does not ask for any personal information beyond a nickname of your choice, and it has no chat or messages between players. Ads only appear when a player chooses to watch one, and only ads suitable for all ages are requested. If you are a parent and believe your child has sent information you want removed, email me and I will delete it.</p>
+<h2>11. Changes to this policy</h2>
+<p>If this policy changes, the new version will be published in the same place with a new effective date. If a change matters for how your information is used, the game or its store listing will say so.</p>
+<h2>12. Contact</h2>
+<p>Sarath PS Email: <a href="mailto:srthsps22@gmail.com">srthsps22@gmail.com</a></p>
+</div></main>
+<footer><div class="wrap">
+  <span>© 2026 Sarath PS</span>
+  <span><a href="/wise-words/privacy/">Privacy policy</a> · <a href="/wise-words/terms/">Terms</a> · <a href="mailto:srthsps22@gmail.com">srthsps22@gmail.com</a></span>
+</div></footer>
+</body>
+</html>
