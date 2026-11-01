@@ -437,7 +437,8 @@ def main() -> None:
     write("wise-words/privacy/index.html", legal(os.path.join(GAME, "store", "privacy-policy.txt"), "privacy/", "Privacy Policy"))
     write("wise-words/terms/index.html", legal(os.path.join(GAME, "store", "terms-and-conditions.txt"), "terms/", "Terms and Conditions"))
     # The data deletion link given to Google Play (Data safety).
-    write("delete-data/index.html", legal(os.path.join(GAME, "store", "delete-data.txt"), "delete-data/", "Delete your data"))
+    for path in ("delete-my-data", "delete-data"):
+        write(path + "/index.html", legal(os.path.join(GAME, "store", "delete-data.txt"), "delete-my-data/", "Delete your data"))
     write("app-ads.txt", "google.com, pub-7021910910381177, DIRECT, f08c47fec0942fa0\n")
     write(".nojekyll", "")
     write("404.html", page("Page not found – Wise Words", "Page not found.",
