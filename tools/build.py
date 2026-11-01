@@ -4,7 +4,8 @@
 The home page is the Wise Words page; /wise-words/ forwards to it. The privacy
 policy and terms are generated from the game's own texts (store/*.txt), so the
 site always says what the game says. Art comes from the game too: gameplay
-frames (build/store_raw_*.png, from tests/StoreShots.tscn) and Lexi, flags and
+frames (build/store_raw_*.png, from tests/StoreShots.tscn; the friends' room
+from tests/Screenshot.tscn -- --rooms) and Lexi, flags and
 critters (build/site/*.png, from tests/SiteArt.tscn).
 
     python3 tools/build.py ../wise-words
@@ -220,7 +221,8 @@ def phone(img: str, alt: str, tilt: float = 2.0) -> str:
 
 
 def home() -> str:
-    flags = [("en", "English"), ("de", "Deutsch"), ("fr", "Français"), ("es", "Español"), ("pt", "Português"), ("it", "Italiano"), ("nl", "Nederlands")]
+    flags = [("en", "English"), ("de", "Deutsch"), ("fr", "Français"), ("es", "Español"), ("pt", "Português"), ("it", "Italiano"), ("nl", "Nederlands"),
+             ("id", "Bahasa Indonesia"), ("ms", "Bahasa Melayu")]
     critters = ["Butterfly", "Crab", "Ladybug", "Snail", "Firefly"]
     body = f"""<div class="sky">
 {clouds()}
@@ -229,7 +231,7 @@ def home() -> str:
   <div>
     <h1 class="logo" aria-label="Wise Words"><span class="line">{tiles("WISE")}</span><span class="line">{tiles("WORDS", 4)}</span></h1>
     <p class="tagline">A crossword that grows into the sky.</p>
-    <p class="lede">Swipe letters to solve each ledge, watch the vine climb higher, and learn a new word with every swipe. For kids and grown-ups, in seven languages.</p>
+    <p class="lede">Swipe letters to solve each ledge, watch the vine climb higher, and learn a new word with every swipe. For kids and grown-ups, in nine languages.</p>
     <div class="actions">
       <a class="play" href="{PLAY}">{PLAY_ICON}Get it on Google Play</a>
       <span class="soon">In testing now · coming soon to everyone</span>
@@ -279,6 +281,22 @@ def home() -> str:
       <p>See what any solved word means, and hunt down 92 rare treasure words, each with a riddle, similar words and where the word comes from.</p>
     </div>
   </div>
+  <div class="row flip">
+    {phone("play-friends.jpg", "A friends' room: two players racing on one board, each found word in its finder's colour", 2)}
+    <div>
+      <p class="eyebrow">Play with friends</p>
+      <h2>Race on the same puzzle</h2>
+      <p>Make a room, send its code, and up to six friends race on one shared board. Every word shows who found it, in their colour, and the room keeps its own ranking. No chat, no timer, just words.</p>
+    </div>
+  </div>
+  <div class="row">
+    {phone("play-prizes.jpg", "The shop's prizes: Phoenix Lexi, a dragon and a unicorn buddy, golden laurels", -2)}
+    <div>
+      <p class="eyebrow">Only for climbers</p>
+      <h2>Prizes you can't buy</h2>
+      <p>Climb 120 ledges to win Phoenix Lexi, Dragon and Unicorn buddies, and golden laurels for your place in the ranking. They're never sold: the only way to get them is to climb.</p>
+    </div>
+  </div>
 </div></section>
 
 <section><div class="wrap" style="text-align:center">
@@ -292,9 +310,9 @@ def home() -> str:
   <div class="row flip">
     {phone("play-languages.jpg", "Choosing the crossword language, with each language's ledge", 2)}
     <div>
-      <p class="eyebrow">Seven languages</p>
+      <p class="eyebrow">Nine languages</p>
       <h2>Crosswords in your language</h2>
-      <p>Play in any of seven languages, each with its own climb, world ranking and word meanings. Switch any time with the flag on the home screen.</p>
+      <p>Play in any of nine languages, each with its own climb, world ranking and word meanings. Switch any time with the flag on the home screen.</p>
       <div class="flags">{"".join(f'<div class="flag"><img src="/images/flag-{c}.png" alt="" width="44" height="30">{n}</div>' for c, n in flags)}</div>
     </div>
   </div>
@@ -305,8 +323,8 @@ def home() -> str:
   <h2>Made to be calm</h2>
   <ul class="promises">
     <li style="--t:{TILE[3]}">No timers, no fail state, no pressure</li>
-    <li style="--t:{TILE[0]}">No in-app purchases</li>
-    <li style="--t:{TILE[2]}">No pop-up ads: optional reward videos only</li>
+    <li style="--t:{TILE[0]}">Nothing you have to buy: coins come from playing</li>
+    <li style="--t:{TILE[2]}">No ads in the middle of a puzzle</li>
     <li style="--t:{TILE[4]}">Plays offline</li>
     <li style="--t:{TILE[5]}">A fair world ranking: everyone plays the same puzzles</li>
     <li style="--t:{TILE[1]}">Great for kids and grown-ups</li>
@@ -320,7 +338,7 @@ def home() -> str:
   <p class="note" style="color:var(--muted);margin-top:14px">Questions or a word meaning that looks wrong? Email <a href="mailto:{EMAIL}">{EMAIL}</a>.</p>
 </div></section>"""
     return page("Wise Words – a crossword that grows into the sky",
-                "Wise Words: an endless crossword word puzzle for Android. Swipe letters, grow the vine and learn new words, in 7 languages.", body, "")
+                "Wise Words: an endless crossword word puzzle for Android. Swipe letters, grow the vine and learn new words, in 9 languages.", body, "")
 
 
 def link(text: str) -> str:
@@ -397,9 +415,10 @@ def main() -> None:
     # The store's feature graphic is only used for link previews (og:image).
     subprocess.run(["magick", os.path.join(GAME, "store", "en-US", "feature-graphic.png"), "-quality", "86",
                     os.path.join(img, "wise-words-feature.jpg")], check=True)
-    for src, dst in [("1_climb", "play-climb"), ("9_tiles", "play-tiles"), ("10_daily", "play-daily"),
-                     ("3_treasure", "play-word"), ("11_languages", "play-languages")]:
-        subprocess.run(["magick", os.path.join(GAME, "build", f"store_raw_{src}.png"), "-resize", "540x",
+    for src, dst in [("store_raw_1_climb", "play-climb"), ("store_raw_9_tiles", "play-tiles"), ("store_raw_10_daily", "play-daily"),
+                     ("store_raw_3_treasure", "play-word"), ("store_raw_11_languages", "play-languages"),
+                     ("store_raw_12_prizes", "play-prizes"), ("shot_r_rooms_you_found", "play-friends")]:
+        subprocess.run(["magick", os.path.join(GAME, "build", f"{src}.png"), "-resize", "540x",
                         "-quality", "84", os.path.join(img, dst + ".jpg")], check=True)
     art = os.path.join(GAME, "build", "site")
     for name in ["lexi", "lexi-calm"]:
