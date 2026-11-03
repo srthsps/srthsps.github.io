@@ -261,7 +261,7 @@ def home() -> str:
     <div>
       <p class="eyebrow">A new surprise in every world</p>
       <h2>Eight kinds of special tiles</h2>
-      <p>Ice freezes a word until its neighbour is solved. Bombs uncover letters. Mystery tiles change with every try. Fog, golden buds, lightning and moss join as you climb through five worlds, from Sunny Meadow to Starry Night.</p>
+      <p>Ice freezes a word until its neighbour is solved. Bombs uncover letters. Mystery tiles change with every try. Fog, golden buds, lightning and moss join as you climb through 15 worlds, each with its own scenery and weather, from Sunny Meadow all the way to the Moon.</p>
       <ul class="chips"><li>Ice</li><li>Bombs</li><li>Mystery tiles</li><li>Fog</li><li>Golden buds</li><li>Lightning</li><li>Moss</li><li>Critters</li></ul>
     </div>
   </div>
