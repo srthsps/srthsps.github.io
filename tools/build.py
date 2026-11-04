@@ -300,7 +300,7 @@ def home() -> str:
 </div></section>
 
 <section><div class="wrap" style="text-align:center">
-  <p class="eyebrow">From ledge 71</p>
+  <p class="eyebrow">From ledge 23</p>
   <h2>Catch all five critters</h2>
   <p style="color:var(--muted);max-width:34em;margin:10px auto 0">They hop around the vine with every try. Solve the word one sits on to catch it for your collection.</p>
   <div class="critters">{"".join(f'<figure><img src="/images/critter-{i}.png" alt="" width="92" height="92" loading="lazy">{n}</figure>' for i, n in enumerate(critters))}</div>
