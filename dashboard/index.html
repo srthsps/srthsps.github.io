@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Wise Words Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f6f5fb; --card: #ffffff; --ink: #2a1d45; --soft: #6f6688; --line: #e8e4f3;
+    --accent: #7b4fe0; --green: #2fbf71; --pink: #ff5d8f; --yellow: #f6b93b; --blue: #3aa7e8;
+    --chip: #f0ecfb;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #15121f; --card: #1f1a2e; --ink: #f1edfa; --soft: #a49bbd; --line: #2f2944;
+            --accent: #a585ff; --chip: #2a2340; }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 15px/1.45 Inter, system-ui, sans-serif; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 24px 16px 60px; }
+  header { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-bottom: 20px; }
+  h1 { font-size: 22px; margin: 0; letter-spacing: -0.02em; }
+  h2 { font-size: 15px; margin: 0 0 12px; color: var(--soft); font-weight: 600; }
+  .muted { color: var(--soft); font-size: 13px; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 18px; }
+  .grid { display: grid; gap: 14px; }
+  .stats { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); margin-bottom: 14px; }
+  .stat .n { font-size: 28px; font-weight: 700; letter-spacing: -0.02em; }
+  .stat .l { color: var(--soft); font-size: 13px; }
+  .two { grid-template-columns: 1fr 1fr; margin-bottom: 14px; }
+  @media (max-width: 760px) { .two { grid-template-columns: 1fr; } }
+  .chart { position: relative; height: 260px; }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  th, td { text-align: left; padding: 8px 6px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+  th { color: var(--soft); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; }
+  td.num, th.num { text-align: right; }
+  .scroll { overflow-x: auto; }
+  .tag { display: inline-block; padding: 1px 8px; border-radius: 99px; background: var(--chip); font-size: 12px; color: var(--soft); }
+  .controls { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  button, select, input { font: inherit; color: inherit; }
+  button, select { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 7px 12px; cursor: pointer; }
+  button.primary { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 600; }
+  label.check { display: inline-flex; gap: 6px; align-items: center; font-size: 14px; color: var(--soft); }
+  #login { max-width: 360px; margin: 12vh auto 0; }
+  #login input { width: 100%; padding: 10px 12px; border: 1px solid var(--line); border-radius: 10px; background: var(--bg); margin-bottom: 10px; }
+  #login button { width: 100%; padding: 10px; }
+  .error { color: var(--pink); font-size: 14px; min-height: 20px; }
+  .hidden { display: none; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <form id="login" class="card hidden" autocomplete="on">
+    <h1 style="margin-bottom:4px">Wise Words</h1>
+    <p class="muted" style="margin-top:0">Owner's dashboard. Sign in to see the numbers.</p>
+    <input id="email" type="email" placeholder="Email" autocomplete="username" required>
+    <input id="password" type="password" placeholder="Password" autocomplete="current-password" required>
+    <div class="error" id="login-error"></div>
+    <button class="primary" type="submit">Sign in</button>
+  </form>
+
+  <main id="app" class="hidden">
+    <header>
+      <div>
+        <h1>Wise Words</h1>
+        <div class="muted" id="updated"></div>
+      </div>
+      <div class="controls">
+        <label class="check"><input type="checkbox" id="hide-testers" checked> Hide testers</label>
+        <select id="days">
+          <option value="14">Last 14 days</option>
+          <option value="30" selected>Last 30 days</option>
+          <option value="90">Last 90 days</option>
+        </select>
+        <button id="refresh">Refresh</button>
+        <button id="signout">Sign out</button>
+      </div>
+    </header>
+
+    <div class="grid stats" id="stats"></div>
+
+    <div class="card" style="margin-bottom:14px">
+      <h2>Players per day</h2>
+      <div class="chart"><canvas id="daily-chart"></canvas></div>
+    </div>
+
+    <div class="grid two">
+      <div class="card">
+        <h2>Ledges played per day</h2>
+        <div class="chart"><canvas id="ledges-chart"></canvas></div>
+      </div>
+      <div class="card">
+        <h2>How far players get (ledges played)</h2>
+        <div class="chart"><canvas id="depth-chart"></canvas></div>
+      </div>
+    </div>
+
+    <div class="grid two">
+      <div class="card scroll">
+        <h2>Puzzle languages</h2>
+        <table id="languages"></table>
+      </div>
+      <div class="card scroll">
+        <h2>Word reports</h2>
+        <table id="reports"></table>
+      </div>
+    </div>
+
+    <div class="card scroll">
+      <h2>Players (most recent first)</h2>
+      <table id="players"></table>
+    </div>
+    <p class="muted">Counts only players who picked a name: people who installed but never named themselves aren't in the database (see Play Console or Firebase for those). Days are in Indian time. "Tester" = joined before launch day.</p>
+  </main>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script>
+// The URL and publishable key are public (they ship inside the game too). The
+// numbers only come back for an account on the database's dashboard_admins list
+// (supabase/dashboard.sql in the game's repo).
+const SUPABASE_URL = "https://doqmywrlpukzigldqbxj.supabase.co";
+const SUPABASE_KEY = "sb_publishable_Cl6GKWU48uWp7w-SdyRHfg_o2gSLHgQ";
+const LANGS = { en: "English", de: "Deutsch", fr: "Français", es: "Español", pt: "Português",
+                it: "Italiano", nl: "Nederlands", id: "Bahasa Indonesia", ms: "Bahasa Melayu" };
+const REASONS = { not_a_word: "Not a word", offensive: "Offensive", wrong_meaning: "Wrong meaning", too_obscure: "Too obscure" };
+
+const db = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+const $ = (id) => document.getElementById(id);
+const charts = {};
+let data = null;
+
+const css = (v) => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const when = (t) => t ? new Date(t).toLocaleString(undefined, { day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" }) : "–";
+const day = (d) => new Date(d + "T00:00:00").toLocaleDateString(undefined, { day: "numeric", month: "short" });
+
+async function load() {
+  $("updated").textContent = "Loading…";
+  const { data: res, error } = await db.rpc("dashboard_stats", { p_days: Number($("days").value) });
+  if (error) {
+    $("updated").textContent = error.message.includes("not allowed")
+      ? "This account isn't on the dashboard's allow list." : "Couldn't load: " + error.message;
+    return;
+  }
+  data = res;
+  render();
+}
+
+function render() {
+  const hide = $("hide-testers").checked;
+  const t = data.totals;
+  const players = data.players.filter((p) => !hide || !p.tester);
+  $("updated").textContent = "Updated " + when(data.generated_at);
+
+  const cards = [
+    [hide ? t.players_since_launch : t.players, hide ? "Players since launch" : "Players (all)"],
+    [t.active_today, "Active today"],
+    [t.active_7d, "Active in 7 days"],
+    [t.came_back, "Played on 2+ days"],
+    [t.ledges_today, "Ledges today"],
+    [t.ledges, "Ledges in total"],
+    [t.word_reports, "Word reports"],
+    [t.cloud_saves, "Cloud saves"],
+  ];
+  $("stats").innerHTML = cards.map(([n, l]) =>
+    `<div class="card stat"><div class="n">${Number(n).toLocaleString()}</div><div class="l">${l}</div></div>`).join("");
+
+  const labels = data.daily.map((d) => day(d.day));
+  chart("daily-chart", "line", labels, [
+    { label: "Active players", data: data.daily.map((d) => d.active_players), borderColor: css("--accent"), backgroundColor: css("--accent"), tension: 0.3 },
+    { label: "New players", data: data.daily.map((d) => d.new_players), borderColor: css("--green"), backgroundColor: css("--green"), tension: 0.3 },
+  ]);
+  chart("ledges-chart", "bar", labels, [
+    { label: "Ledges", data: data.daily.map((d) => d.ledges), backgroundColor: css("--blue"), borderRadius: 4 },
+  ]);
+  chart("depth-chart", "bar", data.depth.map((b) => b.bucket), [
+    { label: "Players", data: data.depth.map((b) => b.players), backgroundColor: css("--yellow"), borderRadius: 4 },
+  ]);
+
+  $("languages").innerHTML = "<tr><th>Language</th><th class='num'>Players</th><th class='num'>Ledges</th><th class='num'>Top ledge</th><th>Last played</th></tr>" +
+    (data.languages.length ? data.languages.map((l) =>
+      `<tr><td>${esc(LANGS[l.language] || l.language)}</td><td class="num">${l.players}</td><td class="num">${l.ledges}</td><td class="num">${l.top_ledge}</td><td>${when(l.last_played)}</td></tr>`).join("")
+      : "<tr><td colspan='5' class='muted'>No ledges yet.</td></tr>");
+
+  $("reports").innerHTML = "<tr><th>Word</th><th>Language</th><th>Reason</th><th class='num'>Reports</th><th>Last</th></tr>" +
+    (data.word_reports.length ? data.word_reports.map((r) =>
+      `<tr><td><b>${esc(r.word)}</b></td><td>${esc(r.language)}</td><td>${esc(REASONS[r.reason] || r.reason)}</td><td class="num">${r.reports}</td><td>${when(r.last_report)}</td></tr>`).join("")
+      : "<tr><td colspan='5' class='muted'>No reports.</td></tr>");
+
+  $("players").innerHTML = "<tr><th>Name</th><th>Joined</th><th class='num'>Ledges</th><th class='num'>Days played</th><th>Languages</th><th>Last played</th></tr>" +
+    (players.length ? players.map((p) =>
+      `<tr><td>${esc(p.name)} ${p.tester ? "<span class='tag'>tester</span>" : ""}</td><td>${when(p.created_at)}</td><td class="num">${p.ledges}</td><td class="num">${p.days_played}</td><td>${esc(p.languages.split(",").filter(Boolean).map((c) => c.toUpperCase()).join(" "))}</td><td>${when(p.last_played)}</td></tr>`).join("")
+      : "<tr><td colspan='6' class='muted'>No players yet.</td></tr>");
+}
+
+function chart(id, type, labels, datasets) {
+  if (charts[id]) charts[id].destroy();
+  charts[id] = new Chart($(id), {
+    type, data: { labels, datasets },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { display: datasets.length > 1, labels: { color: css("--soft"), boxWidth: 12 } } },
+      scales: {
+        x: { ticks: { color: css("--soft"), maxRotation: 0, autoSkip: true }, grid: { display: false } },
+        y: { beginAtZero: true, ticks: { color: css("--soft"), precision: 0 }, grid: { color: css("--line") } },
+      },
+    },
+  });
+}
+
+async function show() {
+  const { data: { session } } = await db.auth.getSession();
+  $("login").classList.toggle("hidden", !!session);
+  $("app").classList.toggle("hidden", !session);
+  if (session) load();
+}
+
+$("login").addEventListener("submit", async (e) => {
+  e.preventDefault();
+  $("login-error").textContent = "";
+  const { error } = await db.auth.signInWithPassword({ email: $("email").value, password: $("password").value });
+  if (error) { $("login-error").textContent = error.message; return; }
+  show();
+});
+$("signout").addEventListener("click", async () => { await db.auth.signOut(); show(); });
+$("refresh").addEventListener("click", load);
+$("days").addEventListener("change", load);
+$("hide-testers").addEventListener("change", () => data && render());
+show();
+</script>
+</body>
+</html>
