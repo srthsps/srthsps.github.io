@@ -109,6 +109,17 @@
       </div>
     </div>
 
+    <div class="grid two">
+      <div class="card scroll">
+        <h2>Retention: of each day's new players, how many played again</h2>
+        <table id="cohorts"></table>
+      </div>
+      <div class="card scroll">
+        <h2>Experiments (remote config)</h2>
+        <table id="experiments"></table>
+      </div>
+    </div>
+
     <div class="card scroll">
       <h2>Players (most recent first)</h2>
       <table id="players"></table>
@@ -191,6 +202,20 @@ function render() {
     (data.word_reports.length ? data.word_reports.map((r) =>
       `<tr><td><b>${esc(r.word)}</b></td><td>${esc(r.language)}</td><td>${esc(REASONS[r.reason] || r.reason)}</td><td class="num">${r.reports}</td><td>${when(r.last_report)}</td></tr>`).join("")
       : "<tr><td colspan='5' class='muted'>No reports.</td></tr>");
+
+  const pct = (n, of) => (n === null || n === undefined) ? "<span class='muted'>–</span>"
+    : of > 0 ? `${n} <span class="muted">(${Math.round((n / of) * 100)}%)</span>` : "0";
+  const cohorts = (data.cohorts || []).filter((c) => !hide || c.day >= data.launch);
+  $("cohorts").innerHTML = "<tr><th>Joined</th><th class='num'>Players</th><th class='num'>Next day</th><th class='num'>Day 3</th><th class='num'>Day 7</th><th class='num'>Ever again</th></tr>" +
+    (cohorts.length ? cohorts.map((c) =>
+      `<tr><td>${day(c.day)}</td><td class="num">${c.players}</td><td class="num">${pct(c.d1, c.players)}</td><td class="num">${pct(c.d3, c.players)}</td><td class="num">${pct(c.d7, c.players)}</td><td class="num">${pct(c.came_back, c.players)}</td></tr>`).join("")
+      : "<tr><td colspan='6' class='muted'>No new players in this range.</td></tr>");
+
+  const exps = data.experiments || [];
+  $("experiments").innerHTML = "<tr><th>Experiment</th><th>Group</th><th class='num'>Players</th><th class='num'>Avg ledges</th><th class='num'>Next day</th><th class='num'>2+ days</th></tr>" +
+    (exps.length ? exps.map((x) =>
+      `<tr><td>${esc(x.experiment)}</td><td>${esc(x.variant)}</td><td class="num">${x.players}</td><td class="num">${x.avg_ledges}</td><td class="num">${pct(x.d1, x.d1_eligible)}</td><td class="num">${pct(x.came_back, x.players)}</td></tr>`).join("")
+      : "<tr><td colspan='6' class='muted'>No experiments running. Add one in Supabase: app_config → game.</td></tr>");
 
   $("players").innerHTML = "<tr><th>Name</th><th>Joined</th><th class='num'>Ledges</th><th class='num'>Days played</th><th>Languages</th><th>Last played</th></tr>" +
     (players.length ? players.map((p) =>
